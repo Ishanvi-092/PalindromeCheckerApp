@@ -1,24 +1,21 @@
 import java.util.Scanner;
 public class PalindromeCheckerApp {
     /**
-     * Application entry point for UC2.
+     * Application entry point for UC3.
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a string: ");
         String input = sc.nextLine();
-        boolean isPalindrome = true;
-        for (int i = 0; i < input.length() / 2; i++) {
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        String reverse = "";
+
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reverse += input.charAt(i);
         }
-        if (isPalindrome) {
-            System.out.println(input + " is a palindrome.");
-        } else {
-            System.out.println(input + " is not a palindrome.");
+        System.out.println("The reversed string is: " + reverse);
+        if (reverse.equals(input)) {
+            System.out.println("It is a palindrome!");
         }
         sc.close();
     }
