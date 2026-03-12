@@ -1,31 +1,27 @@
 import java.util.*;
 public class PalindromeCheckerApp {
     /**
-     * Application entry point for UC6.
+     * Application entry point for UC7.
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
                 // Define the input string to validate
-                String input = "civic";
+                String input = "refer";
 
                 // Create a Queue to store characters in FIFO order
-                Queue<Character> queue = new LinkedList<>();
-
-                // Create a Stack to store characters in LIFO order
-                Stack<Character> stack = new Stack<>();
+                Deque<Character> deque = new ArrayDeque<>();
 
                 // Insert each character into both queue and stack
                 for (char c : input.toCharArray()) {
-                    queue.add(c);
-                    stack.push(c);
+                    deque.add(c);
                 }
 
                 // Flag to track palindrome status
                 boolean isPalindrome = true;
 
                 // Compare characters until the queue becomes empty
-                while (!queue.isEmpty()) {
-                    if (queue.remove() != stack.pop()) {
+                while (deque.size() > 1) {
+                    if (deque.removeFirst() != deque.removeLast()) {
                         isPalindrome = false;
                         break;
                     }
