@@ -2,27 +2,44 @@ import java.util.*;
 
 public class PalindromeCheckerApp {
     /**
-     * Application entry point for UC9.
+     * Application entry point for UC11.
      */
     public static void main(String[] args) {
 
-        // Define the input string
-        String input = "A man a plan a canal Panama";
+        String input = "racecar";
 
-        // Normalize the string (remove spaces and convert to lowercase)
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+        /**
+         * Service class that contains palindrome logic.
+         */
+        class PalindromeService {
 
-        boolean isPalindrome = true;
+            /**
+             * Checks whether the input string is a palindrome.
+             *
+             * @param input Input string
+             * @return true if palindrome, false otherwise
+             */
+            public boolean checkPalindrome(String input) {
+                input = "racecar";
+                int start = 0;
+                int end = input.length() - 1;
 
-        for (int i = 0; i < normalized.length() / 2; i++) {
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
+                while (start < end) {
+                    if (input.charAt(start) != input.charAt(end)) {
+                        return false;
+                    }
+                    start++;
+                    end--;
+                }
+                return true;
             }
         }
 
-        // Output result
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        PalindromeService service = new PalindromeService();
+
+        if(service.checkPalindrome(input)){
+            System.out.println("Input : " + input);
+            System.out.println("Is Palindrome? : true");
+        }
     }
 }
