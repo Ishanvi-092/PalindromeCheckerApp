@@ -1,33 +1,41 @@
 import java.util.*;
 public class PalindromeCheckerApp {
+
     /**
-     * Application entry point for UC8.
-     * @param args Command-line arguments
+     * Recursively checks whether a string is palindrome.
+     * @param s     Input string
+     * @param start Starting index
+     * @param end   Ending index
+     * @return true if palindrome, otherwise false
      */
-    public static void main(String[] args) {
-                // Define the input string to validate
-                String input = "level";
 
-                LinkedList<Character> list = new LinkedList<>();
+    private static boolean check(String s, int start, int end) {
 
-                for (char c : input.toCharArray()) {
-                    list.add(c);
-                }
-
-                // Flag to track palindrome status
-                boolean isPalindrome = true;
-
-                while (list.size() > 1) {
-                    if (list.removeFirst() != list.removeLast()) {
-                        isPalindrome = false;
-                        break;
-                    }
-                }
-                // Output result
-                System.out.println("Input : " + input);
-                System.out.println("Is Palindrome? : " + isPalindrome);
-            }
+        if (start >= end) {
+            return true;
         }
 
+        // If characters don't match, not a palindrome
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
 
+        return check(s, start + 1, end - 1);
+    }
 
+    /**
+     * Application entry point for UC9.
+     */
+    public static void main(String[] args) {
+
+        // Define the input string
+        String input = "level";
+
+        // Call recursive function
+        boolean isPalindrome = check(input, 0, input.length() - 1);
+
+        // Output result
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
+    }
+}
